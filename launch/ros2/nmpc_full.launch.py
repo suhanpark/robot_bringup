@@ -20,8 +20,9 @@ def generate_launch_description():
     ]
 
     cfg_file = PathJoinSubstitution([
-        get_package_share_directory('sdf_nmpc_ros'),
+        get_package_share_directory('robot_bringup'),
         'config',
+        'ros2',
         'sim_lidar.yaml'
     ])
 
