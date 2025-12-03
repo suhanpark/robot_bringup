@@ -1,0 +1,4 @@
+debug: false
+window_size: 8
+battery_topic: /mavros/battery
+voltage_threshold: 13.7

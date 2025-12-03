@@ -1,0 +1,59 @@
+# Common configuration for PX4 autopilot
+#
+# node:
+startup_px4_usb_quirk: true
+
+# --- system plugins ---
+
+# sys_status & sys_time connection options
+conn:
+  heartbeat_rate: 1.0    # send hertbeat rate in Hertz
+  timeout: 10.0          # hertbeat timeout in seconds
+  timesync_rate: 10.0    # TIMESYNC rate in Hertz (feature disabled if 0.0)
+  system_time_rate: 1.0  # send system time to FCU rate in Hertz (disabled if 0.0)
+
+# sys_status
+sys:
+  min_voltage: 10.0   # diagnostics min voltage
+  disable_diag: false # disable all sys_status diagnostics, except heartbeat
+
+# sys_time
+time:
+  time_ref_source: "fcu"  # time_reference source
+  timesync_mode: MAVLINK
+  timesync_avg_alpha: 0.6 # timesync averaging factor
+
+# --- mavros plugins (alphabetical order) ---
+
+# 3dr_radio
+# tdr_radio:
+#   low_rssi: 40  # raw rssi lower level for diagnostics
+
+# command
+cmd:
+  use_comp_id_system_control: false # quirk for some old FCUs
+
+# imu_pub
+imu:
+  frame_id: "base_link"
+  # need find actual values
+  linear_acceleration_stdev: 0.001
+  angular_velocity_stdev: 0.003490659  #0.02 degrees
+  orientation_stdev: 1.0
+  magnetic_stdev: 0.0
+  mov_av_win_size: 5
+
+# setpoint_attitude
+setpoint_attitude:
+  reverse_thrust: false     # allow reversed thrust
+  use_quaternion: false     # enable PoseStamped topic subscriber
+  tf:
+    listen: false           # enable tf listener (disable topic subscribers)
+    frame_id: "map"
+    child_frame_id: "target_attitude"
+    rate_limit: 50.0
+
+setpoint_raw:
+  thrust_scaling: 1.0       # used in setpoint_raw attitude callback.
+  # Note: PX4 expects normalized thrust values between 0 and 1, which means that
+  # the scaling needs to be unitary and the inputs should be 0..1 as well.

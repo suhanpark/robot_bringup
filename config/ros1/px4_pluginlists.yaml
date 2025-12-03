@@ -1,0 +1,19 @@
+plugin_blacklist: []
+
+plugin_whitelist:
+- 'sys_*'
+- setpoint_raw
+- imu_pub
+- imu
+- sys_status
+- sys_time
+- command
+- rc_io
+- esc_telemetry
+- esc_status
+# - manual_control
+- setpoint_trajectory
+- local_position
+- vision_pose_estimate
+- gps_status
+- global_position

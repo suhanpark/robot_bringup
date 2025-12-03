@@ -1,0 +1,18 @@
+---
+vlm:
+  type: openai
+  client_config:
+    api_key: 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
+    model: gpt-5 
+prompt: "Detect people" 
+worker:
+  min_separation_s: 20.0
+voxel_size: 0.15
+min_points_per_cluster: 8
+eps_dbscan: 0.3
+
+camera_intrinsics:
+  fx: 691.145659492411
+  fy: 690.9547836776351
+  cx: 716.2047407756927
+  cy: 544.058250985693
