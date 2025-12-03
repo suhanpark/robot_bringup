@@ -1,0 +1,8 @@
+<launch>
+  <node name="service_listener" pkg="service_listener" type="service_listener_node" output="screen" >
+    <param name="node_rate" value="0.5" /> #Hz
+    <param name="service_name" value="/release" />
+    <param name="script" value="systemctl --user restart rmf_owl.service" />
+    <param name="sleep_value" value="10.0" />
+  </node>
+</launch>

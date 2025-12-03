@@ -1,4 +1,4 @@
-logs_directory: /tmp/mimosa/
+logs_directory: /workspace/mimosa_logs/
 world_frame: mimosa_world
 navigation_frame: mimosa_navigation
 body_frame: mimosa_body
@@ -15,9 +15,9 @@ imu:
     extrapolation_max_ts_diff: 0.15 #s
     acc_scale_factor: 1 # Scales the acclerometer measurement. Default is 1, which means no scaling. Livox typically reports acc in g, so we need to scale it to m/s^2
   preintegration:
-    acc_noise_density: 0.0013886655606357616 # 0.013886655606357616  # [ m / s^2 / sqrt(Hz) ]   ( accel "white noise" ) # Vectornav VN-100 0.0013886655606357616
+    acc_noise_density: 0.13886655606357616 # 0.013886655606357616  # [ m / s^2 / sqrt(Hz) ]   ( accel "white noise" ) # Vectornav VN-100 0.0013886655606357616
     acc_bias_random_walk: 8.538212723310593e-05 # [ m / s^3 / sqrt(Hz) ].  ( accel bias diffusion ) # Vectornav VN-100 8.538212723310593e-05
-    gyro_noise_density: 5.4380545102010436e-05 # 5.4380545102010436e-04 # [ rad / s / sqrt(Hz) ]   ( gyro "white noise" ) # Vectornav VN-100 5.4380545102010436e-05
+    gyro_noise_density: 5.4380545102010436e-03 # 5.4380545102010436e-04 # [ rad / s / sqrt(Hz) ]   ( gyro "white noise" ) # Vectornav VN-100 5.4380545102010436e-05
     gyro_bias_random_walk: 1.6587925152480572e-06 # [ rad / s^2 / sqrt(Hz) ] ( gyro bias diffusion ) # Vectornav VN-100 1.6587925152480572e-06
     integration_sigma: 0 # Unclear what this is. Set to 0 for now.
     use_2nd_order_coriolis: false
@@ -28,7 +28,6 @@ imu:
 graph:
   manager:
     log_level: warn
-    max_ts_diff_for_imu_breaking: 0.001 # seconds
     max_measurement_latency: 0.2 # seconds
     smoother:
       lag: 0.5
@@ -42,7 +41,7 @@ graph:
       relinearize_skip: 1
       enable_relinearization: true
       evaluate_nonlinear_error: false
-      factorization: QR
+      factorization: CHOLESKY
       cache_linearized_factors: true
       enable_detailed_results: false
       enable_partial_relinearization_check: true
@@ -149,7 +148,7 @@ radar:
     initial_skip: 2 # number of initial pointclouds to drop
     ts_offset: 0
     is_exposure_compensated: false # If false, then the timestamp will be shifted by frame_ms/2
-    range_min: 0.1
+    range_min: 0.2
     range_max: 16
     threshold_azimuth_deg: 60
     threshold_elevation_deg: 60

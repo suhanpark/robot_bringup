@@ -1,0 +1,23 @@
+<launch>
+  <arg name="lidar" default="false"/>
+  <arg name="vn100" default="false"/>
+  <arg name="radar" default="false"/>
+  <arg name="cam_sync" default="false"/>
+  <arg name="flexx2" default="false"/>
+
+
+  <include if="$(arg lidar)" file="$(find robot_bringup)/launch/ros1/drivers/airy.launch"/> 
+  <include if="$(arg vn100)" file="$(find robot_bringup)/launch/ros1/drivers/vectornav_driver.launch"/> 
+  <include if="$(arg radar)" file="$(find robot_bringup)/launch/ros1/drivers/iwr6843aop.launch"/> 
+  <include if="$(arg cam_sync)" file="$(find robot_bringup)/launch/ros1/drivers/cam_sync.launch"/> 
+  <include if="$(arg flexx2)" file="$(find robot_bringup)/launch/ros1/drivers/flexx2.launch"/>
+  <!-- <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="2" />
+    <arg name="pkg" value="turtlebot_navigation" />
+    <arg name="file" value="amcl_demo.launch" />
+    <arg name="value" value="initial_pose_x:=17.0 initial_pose_y:=17.0" />
+    <arg name="node_name" value="timed_roslaunch" /> 
+    <arg name="output" value="screen" />
+  </include> -->
+
+</launch>

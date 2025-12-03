@@ -1,0 +1,83 @@
+topics:
+  # ros1 to ros2
+  - topic: /msf_core/odometry
+    type: nav_msgs/msg/Odometry
+    queue_size: 10
+    direction: ros1_to_ros2
+
+  - topic: /controller/state_relay
+    type: std_msgs/msg/String
+    queue_size: 10
+    direction: ros1_to_ros2
+  
+  - topic: /img_node/range_image
+    type: sensor_msgs/msg/Image
+    queue_size: 10
+    direction: ros1_to_ros2
+
+  - topic: /gbplanner_path
+    type: nav_msgs/msg/Path
+    queue_size: 10
+    direction: ros1_to_ros2
+  
+  # - topic: /rslidar_points
+  #   type: sensor_msgs/msg/PointCloud2
+  #   queue_size: 10
+  #   direction: ros1_to_ros2
+
+  - service: /sdf_nmpc/takeoff
+    type: std_srvs/srv/Trigger
+    queue_size: 10
+    direction: ros1_to_ros2
+  
+  - service: /sdf_nmpc/set_flag
+    type: std_srvs/srv/SetBool
+    queue_size: 10
+    direction: ros1_to_ros2
+
+    # ros2 to ros1
+
+  - topic: /mavros/setpoint_raw/local
+    type: mavros_msgs/msg/PositionTarget
+    queue_size: 10
+    direction: ros2_to_ros1
+  
+  - topic: /sdf_nmpc/horizon_ref
+    type: trajectory_msgs/msg/MultiDOFJointTrajectory
+    queue_size: 10
+    direction: ros2_to_ros1
+  
+  - topic: /cam_left/image_raw/compressed
+    type: sensor_msgs/msg/CompressedImage
+    queue_size: 10
+    direction: ros2_to_ros1
+
+  - topic: /cam_front/image_raw/compressed
+    type: sensor_msgs/msg/CompressedImage
+    queue_size: 10
+    direction: ros2_to_ros1
+
+  - topic: /cam_right/image_raw/compressed
+    type: sensor_msgs/msg/CompressedImage
+    queue_size: 10
+    direction: ros2_to_ros1
+
+  - topic: /cmd_vel_viz
+    type: geometry_msgs/msg/TwistStamped
+    queue_size: 10
+    direction: ros2_to_ros1
+
+  - topic: /rl_node/cmd_vel
+    type: geometry_msgs/msg/Twist
+    queue_size: 10
+    direction: ros2_to_ros1
+  
+  - topic: /sdf_nmpc/viz/horizon_ref
+    type: nav_msgs/msg/Path
+    queue_size: 10
+    direction: ros2_to_ros1
+
+  - topic: /sdf_nmpc/viz/horizon_traj
+    type: nav_msgs/msg/Path
+    queue_size: 10
+    direction: ros2_to_ros1

@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+  <rosparam file="$(find robot_bringup)/config/ros1/bridge_robot.yaml" command="load"/>
+</launch>

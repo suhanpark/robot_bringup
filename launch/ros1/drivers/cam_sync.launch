@@ -1,0 +1,20 @@
+<launch>
+  <node pkg="cam_sync" type="image_timestamp_synchronizer" name="image_timestamp_synchronizer_left" output="screen"> # launch-prefix="gdb -ex run --args">
+    <remap from="/gst_image_pub/compressed" to="/cam_left/image_raw/compressed"/>
+    <remap from="/synchronized_image/compressed" to="/cam_left/synchronized/image_raw/compressed"/>
+  </node>
+  <node pkg="cam_sync" type="image_timestamp_synchronizer" name="image_timestamp_synchronizer_front" output="screen"> # launch-prefix="gdb -ex run --args">
+    <remap from="/gst_image_pub/compressed" to="/cam_front/image_raw/compressed"/>
+    <remap from="/synchronized_image/compressed" to="/cam_front/synchronized/image_raw/compressed"/>
+  </node>
+  <node pkg="cam_sync" type="image_timestamp_synchronizer" name="image_timestamp_synchronizer_right" output="screen"> # launch-prefix="gdb -ex run --args">
+    <remap from="/gst_image_pub/compressed" to="/cam_right/image_raw/compressed"/>
+    <remap from="/synchronized_image/compressed" to="/cam_right/synchronized/image_raw/compressed"/>
+  </node>
+
+  <!-- Compressed to Raw -->
+  <node pkg="image_transport" type="republish" name="republish_raw" output="screen" args="compressed">
+      <remap from="in" to="/cam_front/synchronized/image_raw" />
+      <remap from="out" to="/cam_front/synchronized_decompressed/image_raw" />
+  </node>
+</launch>

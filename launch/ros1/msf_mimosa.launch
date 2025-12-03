@@ -1,0 +1,20 @@
+<launch>
+
+    <node name="rmf_obelix_pose_sensor" pkg="msf_updates" type="pose_sensor" respawn="true" output="screen">
+
+        <remap from="msf_updates/transform_input" to="/mimosa_node/graph/transform" />
+        <!-- <remap from="msf_updates/transform_input" to="/loam_transform_CORRECTED" /> -->
+
+        <!-- <remap from="msf_core/imu_state_input" to="/mavros/imu/filtered" /> -->
+        <remap from="msf_core/imu_state_input" to="/vectornav_driver_node/imu/data" />
+        <!-- <remap from="msf_core/imu_state_input" to="/mavros/imu/data_raw" /> -->
+        <!-- <rosparam file="$(find robot_bringup)/config/ros1/msf_compslam.yaml" /> -->
+        <rosparam file="$(find robot_bringup)/config/ros1/msf_mimosa.yaml" />
+        <param name="capability_group" value="Core" />
+    </node>
+    
+    <node name="rmf_obelix_pose_sensor_initialize_service" pkg="rosservice" type="rosservice" args="call --wait rmf_obelix_pose_sensor/pose_sensor/initialize_msf_scale 1.0" />
+  
+    
+
+</launch>

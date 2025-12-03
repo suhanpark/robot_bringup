@@ -1,0 +1,167 @@
+<launch>
+    <arg name="record" default="true" />
+    <arg name="record_path" />
+
+    <node pkg="rosbag" type="record" name="recorder_ssd" output="screen" respawn="false" launch-prefix="nice -n 19" if="$(arg record)" args="--split --size=1024 -o $(arg record_path)/magpie
+      /rosout
+      /rosout_agg
+      /rslidar_imu_data
+      /rslidar_packets
+
+      /radar/cloud
+      /radar/ros_time_now
+
+      /vectornav_driver_node/filter/data
+      /vectornav_driver_node/filter/mag
+      /vectornav_driver_node/imu/mag
+      /vectornav_driver_node/imu/data
+      /vectornav_driver_node/pressure
+      /vectornav_driver_node/temperature
+      /vectornav_driver_node/sync_out_stamp
+
+      /cam_front/image_raw/compressed
+      /cam_front/synchronized/image_raw/compressed
+      /cam_left/image_raw/compressed
+      /cam_left/synchronized/image_raw/compressed
+      /cam_right/image_raw/compressed
+      /cam_right/synchronized/image_raw/compressed
+
+      /royale_cam_royale_camera/camera_info
+      /royale_cam_royale_camera/depth_image_0
+      /royale_cam_royale_camera/gray_image_0
+      /royale_cam_royale_camera/point_cloud_0
+
+      /mimosa_node/graph/debug
+      /mimosa_node/graph/odometry
+      /mimosa_node/graph/optimized_path
+      /mimosa_node/graph/path
+      /mimosa_node/graph/transform
+      /mimosa_node/imu/manager/debug
+      /mimosa_node/imu/manager/odometry
+      /mimosa_node/lidar/geometric/debug
+      /mimosa_node/lidar/manager/debug
+      /mimosa_node/lidar/photometric/debug
+      /mimosa_node/radar/manager/debug
+
+      /msf_core/odometry
+      /msf_core/VN100_odometry
+      /msf_core/pose
+
+      /mavros/battery
+      /mavros/esc_info
+      /mavros/esc_status
+      /mavros/esc_telemetry
+      /mavros/global_position/compass_hdg
+      /mavros/global_position/global
+      /mavros/global_position/gp_lp_offset
+      /mavros/global_position/gp_origin
+      /mavros/global_position/home
+      /mavros/global_position/local
+      /mavros/global_position/raw/fix
+      /mavros/global_position/raw/gps_vel
+      /mavros/global_position/raw/satellites
+      /mavros/global_position/rel_alt
+      /mavros/global_position/set_gp_origin
+      /mavros/gpsstatus/gps1/raw
+      /mavros/gpsstatus/gps1/rtk
+      /mavros/imu/data
+      /mavros/imu/data_raw
+      /mavros/imu/diff_pressure
+      /mavros/imu/mag
+      /mavros/imu/static_pressure
+      /mavros/imu/temperature_baro
+      /mavros/imu/temperature_imu
+      /mavros/local_position/accel
+      /mavros/local_position/odom
+      /mavros/local_position/pose
+      /mavros/rc/in
+      /mavros/rc/out
+      /mavros/rc/override
+      /mavros/setpoint_accel/accel
+      /mavros/setpoint_attitude/cmd_vel
+      /mavros/setpoint_attitude/thrust
+      /mavros/setpoint_position/global
+      /mavros/setpoint_position/global_to_local
+      /mavros/setpoint_position/local
+      /mavros/setpoint_raw/attitude
+      /mavros/setpoint_raw/global
+      /mavros/setpoint_raw/local
+      /mavros/setpoint_raw/target_attitude
+      /mavros/setpoint_raw/target_global
+      /mavros/setpoint_raw/target_local
+      /mavros/setpoint_trajectory/desired
+      /mavros/setpoint_trajectory/local
+      /mavros/setpoint_velocity/cmd_vel
+      /mavros/setpoint_velocity/cmd_vel_unstamped
+      /mavros/state
+
+      /qualisys/theseus/odom
+      /qualisys/theseus/pose
+      /qualisys/theseus/velocity
+      /parameter_events
+      /cpu_monitor/total_active_mem
+      /cpu_monitor/total_available_mem
+      /cpu_monitor/total_buffers_mem
+      /cpu_monitor/total_cached_mem
+      /cpu_monitor/total_cpu
+      /cpu_monitor/total_free_mem
+      /cpu_monitor/total_inactive_mem
+      /cpu_monitor/total_shared_mem
+      /cpu_monitor/total_used_mem
+      /cpu_monitor/total_slab_mem
+      /vis/best_planning_paths
+      /vis/planning_graph
+      /vis/planning_homing_path
+      /vis/planning_global_graph
+      /vis/ref_path
+      /vis/robot_state
+      /vis/sampler
+      /vis/shortest_paths
+      /vis/manhole_traversal_path
+      /pci_command_trajectory_vis
+      /gbp_time_log
+      /stable_detections_vis
+      /contour_centroids
+      /gbplanner_path
+      /rslidar_imu_data
+      /rl_node/cmd_vel
+      /controller/state_relay
+      
+      /tf
+      /tf_static
+
+      /rovio/T_G_W
+      /rovio/extrinsics0
+      /rovio/imu_biases
+      /rovio/markers
+      /rovio/odometry
+      /rovio/patch
+      /rovio/pcl
+      /rovio/pose_with_covariance_stamped
+      /rovio/transform
+
+      /rig_node/cloud/buffer
+      /rig_node/cloud/debug
+      /rig_node/cloud/gaussians
+      /rig_node/cloud/map
+      /rig_node/cloud/matched
+      /rig_node/cloud/static
+      /rig_node/cloud/tracked
+      /rig_node/debug
+      /rig_node/graph/bias/baro
+      /rig_node/graph/debug
+      /rig_node/graph/extrinsic
+      /rig_node/graph/full_path
+      /rig_node/graph/odom_path
+      /rig_node/graph/odometry
+      /rig_node/graph/pose_stamped
+      /rig_node/odometry
+      /rig_node/pose
+      /rig_node/twist
+
+      /sdf_nmpc/horizon_ref
+      /sdf_nmpc/viz/horizon_ref
+      /sdf_nmpc/viz/horizon_traj
+    " />
+
+</launch>
