@@ -57,14 +57,14 @@ graph:
 
 lidar:
   sensor_frame: mimosa_lidar
-  T_B_S: [-0.06605, -0.01878, 0.034, 0.707, 0.00, -0.707, 0.00] # x, y, z, x, y, z, w
+  T_B_S: [0, 0, 0, 0, 0, 0, 1] # TODO: Calibrate extrinsic for Unitree L2 mounting pose on your platform. Format: x, y, z, qx, qy, qz, qw
   T_B_OdometryLoggerFrame: [0, 0, 0, 0, 0, 0, 1] # x, y, z, x, y, z, w
   manager:
     log_level: warn
     enabled: true
     use_to_init: true
     initial_skip: 2 # number of initial pointclouds to drop
-    transpose_pointcloud: true # Transpose the pointcloud to have height correspond to the number of rings and width correspond to the number of points per ring
+    transpose_pointcloud: false # Unitree L2 does not use ring-structured PointCloud2 layout like RS-AIRY
     ts_offset: 0
     range_min: 0.35
     range_max: 100 #100

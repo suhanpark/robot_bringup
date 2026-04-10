@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="unitree_lidar_ros" name="unitree_lidar_ros_node" type="unitree_lidar_ros_node" output="screen">
+    <rosparam file="$(find robot_bringup)/config/ros1/unilidar_l2.yaml" command="load"/>
+  </node>
+</launch>
